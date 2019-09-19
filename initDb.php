@@ -10,6 +10,7 @@ $conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
 try{
 	$db = new PDO($conn_string, $username, $password);
 	echo "Connected";
+
 	//create table
 	$query = "create table if not exists `TestUsers`(
 		`id` int auto_increment not null,
@@ -23,6 +24,7 @@ try{
 	$r = $stmt->execute();
 	echo "<br>" . ($r>0?"Created table or already exists":"Failed to create table") . "<br>";
 	unset($r);
+
 	//simple insert
 	//TODO/homework make values variables bindable
 	$insert_query = "INSERT INTO `TestUsers`( `username`, `pin`) VALUES (:username, :pin)";
@@ -30,14 +32,15 @@ try{
 	$newUser = "Billy";
 	$newPin = "1234";
 	$r = $stmt->execute(array(":username"=> $newUser, ":pin"=>$newPin));
-
 	print_r($stmt->errorInfo());
+
 	//TODO catch error from DB
 	echo "<br>" . ($r>0?"Insert successful":"Insert failed") . "<br>";
 	
 	//TODO select query using bindable :username is where clause
 	//select * from TestUsers where username = 	
 }
+
 catch(Exception $e){
 	echo $e->getMessage();
 	exit("Something went wrong");
