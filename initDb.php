@@ -25,15 +25,18 @@ try{
 	unset($r);
 	//simple insert
 	//TODO/homework make values variables bindable
-	$insert_query = "INSERT INTO `TestUsers`( `username`, `pin`) VALUES ('JohnDoe', 1234)";
+	$insert_query = "INSERT INTO `TestUsers`( `username`, `pin`) VALUES (:username, :pin)";
 	$stmt = $db->prepare($insert_query);
-	$r = $stmt->execute();
+	$newUser = "Billy";
+	$newPin = "1234";
+	$r = $stmt->execute(array(":username"=> $newUser, ":pin"=>$newPin));
+
+	print_r($stmt->errorInfo());
 	//TODO catch error from DB
 	echo "<br>" . ($r>0?"Insert successful":"Insert failed") . "<br>";
 	
 	//TODO select query using bindable :username is where clause
-	//select * from TestUsers where username = 
-	
+	//select * from TestUsers where username = 	
 }
 catch(Exception $e){
 	echo $e->getMessage();
