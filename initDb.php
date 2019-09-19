@@ -6,9 +6,7 @@ error_reporting(E_ALL);
 //pull in config.php so we can access the variables from it
 require('config.php');
 echo "Loaded Host: " . $host;
-
 $conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
-
 try{
 	$db = new PDO($conn_string, $username, $password);
 	echo "Connected";
@@ -19,7 +17,9 @@ try{
 		`pin` int default 0,
 		PRIMARY KEY (`id`)
 		) CHARACTER SET utf8 COLLATE utf8_general_ci";
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 	$stmt = $db->prepare($query);
+	print_r($stmt->errorInfo());
 	$r = $stmt->execute();
 	echo "<br>" . ($r>0?"Created table or already exists":"Failed to create table") . "<br>";
 	unset($r);
@@ -28,24 +28,17 @@ try{
 	$insert_query = "INSERT INTO `TestUsers`( `username`, `pin`) VALUES ('JohnDoe', 1234)";
 	$stmt = $db->prepare($insert_query);
 	$r = $stmt->execute();
-	$user = "JohnDoe";
-	$pin = 1234;
-	//DB Insert query
-	//Bind values
-	$r = $stmt->execute(...);
 	//TODO catch error from DB
 	echo "<br>" . ($r>0?"Insert successful":"Insert failed") . "<br>";
 	
 	//TODO select query using bindable :username is where clause
 	//select * from TestUsers where username = 
-	$select_query = "select * from `TestUsers` where username = :username"
-
-	//previous connection/query prep/etc
-	$result = $stmt->fetch();
-	echo "<br><pre> . var_export($result, true) . "</pre><br>";
+	
 }
 catch(Exception $e){
 	echo $e->getMessage();
 	exit("Something went wrong");
 }
+
 ?>
+
