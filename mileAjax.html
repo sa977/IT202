@@ -1,4 +1,8 @@
-<html> <head> <script> function myAjax(method, type, destination, data) {
+<html>
+<head>
+<script>
+function myAjax(method, type, destination, data)
+{
 	let xhttp = new XMLHttpRequest();
 	method = method.toUpperCase();
 	if(data)
@@ -33,7 +37,8 @@
 		xhttp.send();
 	}
 }
-function onSubmit() {
+function onSubmit()
+{
 	let form = document.forms[0];
 	let sv = form.type.value;
 	switch(sv)
@@ -44,12 +49,15 @@ function onSubmit() {
 			break;
 	}
 }
-function sampleDB() {
+function sampleDB()
+{
 	let cont = document.getElementById("output");
 	myAjax("POST", "db", cont);
 }
-</script> <style> body{background-color: black;} section{ width:80%; margin-left: auto; margin-right:auto; 
-background-color:white; padding: 2%;margin-top: 2%;} </style> </head> <body onload="handleInputs();"> 
+</script>
+</head>
+<body onload="handleInputs();">
+
 <section>
 	<form onsubmit="onSubmit(); return false;" style="display: inline-grid">
 		
@@ -57,10 +65,12 @@ background-color:white; padding: 2%;margin-top: 2%;} </style> </head> <body onlo
 			<option value="db">Get Test Users from DB</option>
 		</select>
 		<input type="submit" value="Send it out"/>
-	</form> </section> <section>
+	</form>
+</section>
+
+<section>
 	<p><b>Output:</b></p>
 	<p id="output"></p>
-
 </section>
 
 </body>
