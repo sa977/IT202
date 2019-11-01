@@ -1,7 +1,6 @@
 <!DOCTYPE html>  
 <?php
 
-
 function get_sample_users(){
 	require('config.php');
 	$conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
@@ -27,26 +26,6 @@ if(isset($_POST["type"])){
 	}
 	echo $response;
 }
-
-
-//function onSubmit(){
-//	let form = document.forms[0];
-//	let sv = form.type.value;
-//	switch(sv){
-//		case "db": sampleDB();
-//			break;
-//	}
-//
-//function sampleDB(){
-//	let cont = document.getElementById("output");
-//	myAjax("POST", "db", cont);
-//}
-
-
-
-
-
-
 
 
 ini_set('display_errors',1);
@@ -90,18 +69,6 @@ function validate(){
 		succeeded = false;
 	}
 
-//	var email = form.email.value;
-//	var ev = document.getElementById("validation.email");
-//	if(email.indexOf('@') > -1){
-//		ev.style.display = "none";
-//	}
-//
-//	else{
-//		ev.style.display = "block";
-//		ev.innerText = "Please enter a valid email address";
-//		succeeded = false;
-//	}
-
 	return succeeded;	
 }
 
@@ -131,6 +98,7 @@ input { border: 1px solid black; }
 </html>
 
 <?php checkPasswords();?>
+
 
 <?php
 if(isset($_POST)){
