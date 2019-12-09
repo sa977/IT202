@@ -52,9 +52,12 @@ function checkPasswords(form){
 			print_r($stmt->errorInfo());
 			
 			echo var_export($result, true);
+			
 		}
 		catch(Exception $e){
 			echo $e->getMessage();
 		}
+
+		header("Location: projectlogin.php");
 	}
 ?>
