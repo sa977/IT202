@@ -1,3 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+
+
+
 <?php
 ini_set('display_errors',1);
 ini_set('display_startup_errors', 1);
@@ -16,8 +38,11 @@ function checkPasswords(form){
 </head>
 <body>
 	<form method="POST" onsubmit="return checkPasswords(this);"/>
+		Create Username:
 		<input type="text" name="username" placeholder="Enter Username"/>
+		Create Password:
 		<input type="password" name="password" placeholder="Enter Password"/>
+		Confirm Password:
 		<input type="password" name="confirm" placeholder="Re-enter Password"/>
 		<input type="submit" value="Register"/>
 	</form>
