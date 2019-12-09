@@ -15,6 +15,9 @@ error_reporting(E_ALL);
 </body>
 </html>
 <?php
+
+session_start();
+
 	if(isset($_POST['username']) && isset($_POST['password'])){
 		$user = $_POST['username'];
 		$pass = $_POST['password'];
@@ -33,7 +36,8 @@ error_reporting(E_ALL);
 				$hash = password_hash($pass, PASSWORD_BCRYPT);
 				if(password_verify($pass, $results['password'])){
 					echo "Welcome, " . $results["username"];
-					header("Location: pong.html");
+					header("Location: projectgame.html");
+					$_SESSION['user_id'] = $user->ID;
 				}
 				else{
 					echo "Invalid password";
