@@ -14,13 +14,27 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+button {
+  background-color: black;
+  color: white;
+  padding: 14px 2px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 12%;
+
+
 </style>
 </head>
 <body>
 
-
+<p>
+<a href='https://web.njit.edu/~sa977/IT202/projectregister.php'>Register Here</a>
+<p>
 
 <?php
+session_start();
 ini_set('display_errors',1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -30,17 +44,15 @@ error_reporting(E_ALL);
 <head></head>
 <body>
 	<form method="POST"/>
-		Username:
+		<label for="username"><b>Enter Username:</b></label>
 		<input type="text" name="username" placeholder="Enter Username" />
-		Password:
+		<label for="password"><b>Enter Password:</b></label>
 		<input type="password" name="password" placeholder="Enter Password"/>
-		<input type="submit" value="Login"/>
+		<button type="submit">Login</button>
 	</form>
 </body>
 </html>
 <?php
-
-session_start();
 
 	if(isset($_POST['username']) && isset($_POST['password'])){
 		$user = $_POST['username'];
@@ -60,16 +72,18 @@ session_start();
 				$hash = password_hash($pass, PASSWORD_BCRYPT);
 				if(password_verify($pass, $results['password'])){
 					echo "Welcome, " . $results["username"];
-					header("Location: projectgame.html");
-					$_SESSION['user_id'] = $user->ID;
+					$_SESSION['user'] = $username;
+                        		header("Location: projectgame.html");
 				}
 				else{
 					echo "Invalid password";
 				}
+				
 			}
 			else{
 					echo "Invalid username";
 			}
+
 		}
 		catch(Exception $e){
 			echo $e->getMessage();
