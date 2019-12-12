@@ -1,6 +1,20 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
+
+<p>
+<a href='https://web.njit.edu/~sa977/IT202/projectlogin.php'>Login Here</a>
+<p>
+
+
+<p>
+<a href='https://web.njit.edu/~sa977/IT202/projectregister.php'>Register Here</a>
+<p>
+
 
 <style>
 body {
@@ -284,6 +298,11 @@ window.onload = init;
 </head>
 
 <body>
+Welcome 
+<?
+php echo $_SESSION['user']= $username;
+echo $_SESSION['user'];
+?>
   <canvas id="canvas" width="600" height="600"></canvas>
 </body>
 </html>
