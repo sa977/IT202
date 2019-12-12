@@ -14,6 +14,16 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+button {
+  background-color: black;
+  color: white;
+  padding: 14px 2px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+
 </style>
 </head>
 <body>
@@ -38,13 +48,13 @@ function checkPasswords(form){
 </head>
 <body>
 	<form method="POST" onsubmit="return checkPasswords(this);"/>
-		Create Username:
+		<label for="username"><b>Create Username:</b></label>
 		<input type="text" name="username" placeholder="Enter Username"/>
-		Create Password:
+		<label for="password"><b>Create Password:</b></label>
 		<input type="password" name="password" placeholder="Enter Password"/>
-		Confirm Password:
+		<label for="confirm"><b>Confirm Password:</b></label>
 		<input type="password" name="confirm" placeholder="Re-enter Password"/>
-		<input type="submit" value="Register"/>
+		<button type="submit">Register</button>
 	</form>
 </body>
 </html>
